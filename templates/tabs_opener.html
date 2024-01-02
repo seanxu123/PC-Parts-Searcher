@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Searching results...</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1 id="searchingMessage">Searching results...</h1>
+
+    <script>
+        window.onload = function() {
+            var total_results = {{ total_results|tojson|safe }}; // Convert Python list to JSON
+            var items = {{ items|tojson|safe }};
+
+            total_results.forEach(function(results, index) {
+                var uniqueUrl = "result_tab_" + index + "_" + Date.now();
+                var tab = window.open("", uniqueUrl);
+                tab.document.write("<!DOCTYPE html><html><head></head><body></body></html>");
+
+                // Add link to CSS in the new tab's head
+                var cssLink = tab.document.createElement("link");
+                cssLink.rel = "stylesheet";
+                cssLink.type = "text/css";
+                cssLink.href = "{{ url_for('static', filename='style.css') }}";
+                tab.document.head.appendChild(cssLink);
+
+                tab.document.write("<h1>Search Results for: " + items[index]);
+                tab.document.write("</h1><table border='1'>");
+                tab.document.write("<tr><th>#</th><th>Item Name</th><th>Condition</th><th>URL</th><th>Shipping Fee</th><th>Price</th><th>Listing date:</th></tr>");
+                    
+                results.forEach(function(item) {
+                    tab.document.write("<tr>");
+                    tab.document.write("<td>" + item['Item count'] + "</td>");
+                    tab.document.write("<td>" + item['Title'] + "</td>");
+                    tab.document.write("<td>" + item['Condition'] + "</td>");
+                    tab.document.write("<td><a href='" + item['URL'] + "' target='_blank'>" + item['URL'] + "</a></td>");
+                    tab.document.write("<td>" + item['Price'] + "</td>");
+                    tab.document.write("<td>" + item['Shipping fee'] + "</td>");
+                    tab.document.write("<td>" + item['Start Time'] + "</td>");
+                    tab.document.write("</tr>");
+                });
+
+                tab.document.write("</table>");
+            });
+
+            window.close()
+        
+        }
+        
+    </script>
+</body>
+</html>
