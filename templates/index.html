@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+      <meta charset = "UTF-8">
+      <title>Ebay Webscraper</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+      <h1>Welcome to your PC Parts Webscraper</h1>
+      <form id = "searchForm" name = "passdata" action="."  method="post" target = "_blank">
+          <table id = "myTable" border="1">
+              <tr>
+                  <td><label>Item</label></td>
+                  <td><label>Max Price</label></td>
+              </tr>
+              <script>
+               for (let i = 1; i <= 5; i++) {
+                   document.write(`
+                       <tr>
+                           <td><input type="text" name="item${i}"></td>
+                           <td><input type="text" name="max_price${i}"></td>
+                       </tr>
+                   `);
+               }
+           </script>
+              <tr>
+                  <td colspan="2" align="center"><input type="button" value="Add Row" onclick = "addRow()"></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center"><input type="button" value="Remove Row" onclick="removeRow()"></td>
+            </tr>
+              <tr>
+                  <td colspan="2" align="center"><input type="submit" value="Search" ></td>
+              </tr>
+          </table>
+      </form>
+  </body>
+</html>
+
+
+
+
