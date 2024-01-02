@@ -4,10 +4,18 @@
       <meta charset = "UTF-8">
       <title>Ebay Webscraper</title>
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
   <body>
       <h1>Welcome to your PC Parts Webscraper</h1>
+      <p>
+        To find PC parts on eBay, enter the details of the items you are looking for.
+        Each row represents one item, and you can add or remove rows as needed.
+        Fill in the 'Item' field with the name or description of the PC part, and
+        set the maximum price you are willing to pay in the 'Max Price' field.
+    </p>
+ 
       <form id = "searchForm" name = "passdata" action="."  method="post" target = "_blank">
           <table id = "myTable" border="1">
               <tr>

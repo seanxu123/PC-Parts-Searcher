@@ -22,7 +22,7 @@
                 var cssLink = tab.document.createElement("link");
                 cssLink.rel = "stylesheet";
                 cssLink.type = "text/css";
-                cssLink.href = "{{ url_for('static', filename='style.css') }}";
+                cssLink.href = "{{ url_for('static', filename='style2.css') }}";
                 tab.document.head.appendChild(cssLink);
 
                 tab.document.write("<h1>Search Results for: " + items[index]);
