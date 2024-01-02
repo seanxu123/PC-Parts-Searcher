@@ -14,7 +14,7 @@ load_dotenv()
 # Retrieve environment variables
 account_sid = os.getenv("account_sid")
 auth_token = os.getenv("auth_token")
-twilio_num = os.getenv("twilio.num")
+twilio_num = os.getenv("twilio_num")
 phone_num = os.getenv("phone_num")
 key = os.getenv("EBAY_API_KEY")
 
