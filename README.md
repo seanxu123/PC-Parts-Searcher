@@ -29,7 +29,7 @@ For this project's front-end, I chose to use the classic trio of HTML, CSS and J
 
 ## How this application could be improved
 Here are some of the features we are currently working on to improve the product:
-- Reduce delay times between subsequent searches (Completed)
+- Reduce delay times between subsequent searches 
 - Increase the number of websites to extract data from
 - Allow users to sort through results
 - Implement a more sophisticated item filter system
