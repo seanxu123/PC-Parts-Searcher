@@ -64,8 +64,11 @@ class Ebay(object):
                 for item in items:
                     if hasattr(response.reply.searchResult, 'item'):
                       
-                        price = item.sellingStatus.convertedCurrentPrice.value
-                        shipping_fee = item.shippingInfo.shippingServiceCost.value if hasattr(item.shippingInfo, "shippingServiceCost") else None
+                        price = float(item.sellingStatus.convertedCurrentPrice.value)
+                        shipping_fee = 0.00
+                        if hasattr(item.shippingInfo, "shippingServiceCost"):
+                            shipping_fee = float(item.shippingInfo.shippingServiceCost.value)
+                            
                         title = item.title
                         url = item.viewItemURL
                         gmt_start_time = item.listingInfo.startTime 
@@ -75,10 +78,7 @@ class Ebay(object):
                         condition = item.condition.conditionDisplayName if hasattr(item, 'condition') else None
                         
                         #Adjust total price depending on value of shipping fee
-                        if shipping_fee != "N/A":
-                            total_price = round(float(price)+ float(shipping_fee) ,2)
-                        else:
-                            total_price = f"{price} + N/A shipping fee"    
+                        total_price = round(price + shipping_fee, 2)  
                         
                         # Check condition and duplicate status before adding to listings
                         if condition != "For parts or not working" and is_duplicate(title) == False:
@@ -91,7 +91,7 @@ class Ebay(object):
                                 'Shipping fee': shipping_fee,
                                 'URL': url,
                                 'Condition': condition,
-                                'Start Time': atl_start_time
+                                'Start Time': atl_start_time,
                                 'Total Price': total_price
 
                             }
