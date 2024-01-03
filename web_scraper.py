@@ -73,7 +73,13 @@ class Ebay(object):
                         atl_start_time = gmt_start_time.astimezone(pytz.timezone('America/Toronto')) #Convert time at EST
                         atl_start_time = atl_start_time.strftime('%Y-%m-%d %H:%M:%S') #Convert time to string
                         condition = item.condition.conditionDisplayName if hasattr(item, 'condition') else None
-                            
+                        
+                        #Adjust total price depending on value of shipping fee
+                        if shipping_fee != "N/A":
+                            total_price = round(float(price)+ float(shipping_fee) ,2)
+                        else:
+                            total_price = f"{price} + N/A shipping fee"    
+                        
                         # Check condition and duplicate status before adding to listings
                         if condition != "For parts or not working" and is_duplicate(title) == False:
                             item_count += 1
@@ -86,6 +92,8 @@ class Ebay(object):
                                 'URL': url,
                                 'Condition': condition,
                                 'Start Time': atl_start_time
+                                'Total Price': total_price
+
                             }
                             listings.append(attributes)          
             
