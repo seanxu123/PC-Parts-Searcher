@@ -27,16 +27,16 @@
 
                 tab.document.write("<h1>Search Results for: " + items[index]);
                 tab.document.write("</h1><table border='1'>");
-                tab.document.write("<tr><th>#</th><th>Item Name</th><th>Condition</th><th>URL</th><th>Shipping Fee</th><th>Price</th><th>Listing date:</th></tr>");
+                tab.document.write("<tr><th>#</th><th>Item Name</th><th>Condition</th><th>Shipping Fee (CAD$)</th><th>Listed Price (CAD$)</th><th>Total Price (CAD$)</th><th>Listing date:</th></tr>");
                     
                 results.forEach(function(item) {
                     tab.document.write("<tr>");
                     tab.document.write("<td>" + item['Item count'] + "</td>");
-                    tab.document.write("<td>" + item['Title'] + "</td>");
+                    tab.document.write("<td><a href='" + item['URL'] + "' target='_blank'>" + item['Title'] + "</a></td>");
                     tab.document.write("<td>" + item['Condition'] + "</td>");
-                    tab.document.write("<td><a href='" + item['URL'] + "' target='_blank'>" + item['URL'] + "</a></td>");
-                    tab.document.write("<td>" + item['Price'] + "</td>");
                     tab.document.write("<td>" + item['Shipping fee'] + "</td>");
+                    tab.document.write("<td>" + item['Price'] + "</td>");
+                    tab.document.write("<td>" + item['Total Price'] + "</td>");
                     tab.document.write("<td>" + item['Start Time'] + "</td>");
                     tab.document.write("</tr>");
                 });
