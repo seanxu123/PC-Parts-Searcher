@@ -83,6 +83,6 @@ Sean Xu
 - Email: seanxu419@gmail.com
 
 Hamza Chaudry:
-- Linkedin:
-- Email:
+- Linkedin: https://www.linkedin.com/in/hamzachaudhry5/
+- Email: hamza.chaudhry5@outlook.com
 
