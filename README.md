@@ -1,4 +1,4 @@
-# Computer-Parts-Searcher
+# PartPulse
 This project is a web scraper designed to search for computer parts (or any other item) on eBay using their official API. Users can input any number of items and their maximum prices via a web form. The scraper will then fetch all items matching the criteria and display the results on the webpage, including details such as item title, price, shipping fee, and URL. The program also continuously searches for items throughout the day and sends SMS notifications to the user whenever a matching item is found.
 
 ## Example
